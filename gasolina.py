@@ -1,28 +1,34 @@
 import csv
 from sys import argv
 import matplotlib.pyplot as plt
-
-
+from datetime import datetime
 import seaborn as sns
+
+
+
+# Criando a variável data e hora
+
+dia = datetime.now()
+dia = datetime.strftime(dia, '%Y/%m/%d')
 
 # Extraindo as colunas hora e taxa
 
 dias = []
-preços = []
+precos = []
 
 with open(file='./gasolina.csv', mode='r', encoding='utf8') as fp:
   linha = fp.readline()
   linha = fp.readline()
   while linha:
     linha_separada = linha.split(sep=',')
-    dia = linha_separada[1]
+    dia = linha_separada[0]
     dias.append(dia)
-    taxa = float(linha_separada[2])
-    dias.append(taxa)
+    preco = float(linha_separada[1])
+    precos.append(preco)
     linha = fp.readline()
 
 # Salvando no grafico
-grafico = sns.lineplot(x=dias, y=preços)
+grafico = sns.lineplot(x=dias, y=precos)
 grafico = plt.gca()
 
 largura =  80 / 2.54
