@@ -41,4 +41,3 @@ grafico.set_ylabel("Preço", fontsize=10);
 
 
 grafico.figure.savefig(fname="gasolina.png", bbox_inches="tight")
-
